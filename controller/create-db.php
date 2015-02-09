@@ -10,7 +10,16 @@
    $exists  =  $connection->select_db($database);
    
    if(!$exists) {
-     $query = $connection->("CREATE DATABASE $database");       
+     $query = $connection->query("CREATE DATABASE $database"); 
+     
+     if($query){
+         echo "successfully created database: " . $database;
+     }
    }
-       
+     else{
+         echo "database has already exiists.";
+   }
+      
+   
+   
    $connection->close();
